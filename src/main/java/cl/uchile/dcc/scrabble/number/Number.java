@@ -4,6 +4,9 @@ import cl.uchile.dcc.scrabble.iType;
 
 public abstract class Number<Num> implements iType {
 
+    @Override
+    public abstract String toString();
+
     public abstract double toFloat();
 
     public abstract Num resta();
