@@ -1,9 +1,11 @@
 package cc3301.Scrabble.dtypes.number.interger;
 
+import cc3301.Scrabble.dtypes.bool.SBool;
 import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.string.SString;
+import cc3301.Scrabble.operations.iLogical;
 
-public class SBinary extends AbstractInteger {
+public class SBinary extends AbstractInteger implements iLogical{
     private String binary;
     public SBinary(String binary){
         this.binary = binary;
@@ -62,4 +64,41 @@ public class SBinary extends AbstractInteger {
     public SInt toSInt() {
         return new SInt(this.toInt());
     }
+
+    public SBinary or(SBool bool){
+        return (SBinary) bool.orbyBinary(this);
+    }
+
+    public SBinary and(SBool bool){
+        return (SBinary) bool.andbyBinary(this);
+    }
+
+    public SBinary or(SBinary binary){
+        return binary.orbyBinary(this);
+    }
+
+    public SBinary and(SBinary binary){
+        return binary.andbyBinary(this);
+    }
+
+    @Override
+    public SBinary orbyBool(SBool bool) {
+        return this.or(bool);
+    }
+
+    @Override
+    public SBinary andbyBool(SBool bool) {
+        return this.and(bool);
+    }
+
+    @Override
+    public SBinary orbyBinary(SBinary binary) {
+        return null;
+    }
+
+    @Override
+    public SBinary andbyBinary(SBinary binary) {
+        return null;
+    }
+
 }
