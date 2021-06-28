@@ -2,6 +2,10 @@ package cc3301.Scrabble.dtypes;
 
 import cc3301.Scrabble.dtypes.string.SString;
 
+/**
+ * iType defines the operations inherited by every single type,
+ * in this case, the String transformation.
+ */
 public interface iType {
     @Override
     String toString(); // Java type

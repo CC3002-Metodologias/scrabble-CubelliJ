@@ -18,13 +18,14 @@ class SStringTest {
     @Test
     void test_toString() {
         assertEquals(s1.toString().getClass(),String.class);
-        assertEquals(s1.toString(), "Test string");
+        assertEquals(s1.toString(), "Test string ");
     }
 
     @Test
     void test_toSString() {
         s2 = s1.toSString();
-        assertEquals(s2.toString(), "Test string");
+        assertEquals(s2.getClass(),SString.class);
+        assertEquals(s2.toString(), "Test string ");
     }
 
     @Test

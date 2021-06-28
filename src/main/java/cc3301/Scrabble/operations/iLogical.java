@@ -7,6 +7,5 @@ import cc3301.Scrabble.dtypes.number.interger.SBinary;
 public interface iLogical extends iType {
     iLogical orbyBool(SBool bool);
     iLogical andbyBool(SBool bool);
-    SBinary orbyBinary(SBinary binary);
-    SBinary andbyBinary(SBinary binary);
+
 }
