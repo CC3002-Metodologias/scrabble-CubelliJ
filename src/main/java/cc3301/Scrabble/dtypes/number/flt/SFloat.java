@@ -1,9 +1,11 @@
 package cc3301.Scrabble.dtypes.number.flt;
 
 import cc3301.Scrabble.dtypes.number.AbstractNumber;
+import cc3301.Scrabble.dtypes.number.interger.SBinary;
 import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * SFloat -> Scrabble's float.
@@ -27,7 +29,7 @@ import cc3301.Scrabble.operations.iNumberOps;
  * - operationByFloat (sum, sub, mult, div)
  */
 
-public class SFloat extends AbstractNumber implements iNumberOps{
+public class SFloat extends AbstractNumber{
     private double flt;
     // Constructor
     public SFloat(double flt){
@@ -55,36 +57,60 @@ public class SFloat extends AbstractNumber implements iNumberOps{
 
     // Number operation add,
     // returns the sum between the stored value and another iNumber value
-    public SFloat add(iNumberOps operand) {
+    public SFloat add(iSummable operand) {
         return operand.addFloat(this);
     }
 
     // Number operation subtract, returns the subtraction
     // between the stored value and another iNumber value
+    @Override
     public SFloat subtract(iNumberOps operand) {
         return operand.subtractFloat(this);
     }
 
     // Number operation multiply, returns the multiplication
     // between the stored value and another iNumber value
+    @Override
     public SFloat multiply(iNumberOps operand) {
         return operand.multiplyFloat(this);
     }
 
     // Number operation multiply, returns the multiplication
     // between the stored value and another iNumber value
+    @Override
     public SFloat divide(iNumberOps operand) {
         return operand.divideFloat(this);
     }
 
+    @Override
+    public SBinary addBinary(SBinary addend) {
+        return null;
+    }
+
+    @Override
+    public SBinary subtractBinary(SBinary subtract) {
+        return null;
+    }
+
+    @Override
+    public SBinary multiplyBinary(SBinary product) {
+        return null;
+    }
+
+    @Override
+    public SBinary divideBinary(SBinary dividend) {
+        return null;
+    }
+
     /** SInteger double dispatch operations,
      * the SFloat double dispatch methods are inherited and not overwritten
+     * @return
      */
 
 
     // added by integer. (double dispatch)
     @Override
-    public iNumberOps addInt(SInt addend) {
+    public iSummable addInt(SInt addend) {
         double addend_val = addend.toFloat();
         double int_val = this.toFloat();
         double new_int_val = addend_val + int_val; // val = bin + int

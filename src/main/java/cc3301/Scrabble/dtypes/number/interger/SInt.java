@@ -3,6 +3,7 @@ package cc3301.Scrabble.dtypes.number.interger;
 import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * SInt -> Scrabble's Integer
@@ -77,24 +78,28 @@ public class SInt extends AbstractInteger{
 
     // SInt add,
     // returns the sum between the stored value and another number type value
-    public iNumberOps add(iNumberOps operand) {
+    @Override
+    public iSummable add(iSummable operand) {
         return operand.addInt(this);
     }
 
     // SInt subtract,
     // returns the subtraction between the stored value and another number type value
-    public iNumberOps subtract(iNumberOps operand) {
-        return operand.subtractInt(this);
+    @Override
+    public iNumberOps subtract(iNumberOps subtracting) {
+        return subtracting.subtractInt(this);
     }
 
     // SInt multiply,
     // returns the product between the stored value and another number type value
+    @Override
     public iNumberOps multiply(iNumberOps operand) {
         return operand.multiplyInt(this);
     }
 
     // SInt divide,
     // returns the division between the stored value and another number type value
+    @Override
     public iNumberOps divide(iNumberOps operand) {
         return operand.divideInt(this);
     }

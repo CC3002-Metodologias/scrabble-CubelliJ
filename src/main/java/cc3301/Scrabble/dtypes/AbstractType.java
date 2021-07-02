@@ -1,5 +1,6 @@
 package cc3301.Scrabble.dtypes;
 
+import cc3301.Scrabble.component.iComponent;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iSummable;
 
@@ -7,7 +8,7 @@ import cc3301.Scrabble.operations.iSummable;
  * AbstractType extends iType and iSummable
  * Some abstract methods are overriten here, such as addedString (dd) and toString.
  */
-public abstract class AbstractType implements iType, iSummable {
+public abstract class AbstractType implements iType, iSummable, iComponent {
     // Transforms the abstractType to a String
     @Override
     public String toString(){
@@ -23,5 +24,10 @@ public abstract class AbstractType implements iType, iSummable {
     @Override
     public SString addedString(SString string) {
         return new SString(string.toString()+this.toString());
+    }
+
+    @Override
+    public iComponent operate(){
+        return this;
     }
 }

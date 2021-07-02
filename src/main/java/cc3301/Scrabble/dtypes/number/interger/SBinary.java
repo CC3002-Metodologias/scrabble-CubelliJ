@@ -3,8 +3,9 @@ package cc3301.Scrabble.dtypes.number.interger;
 import cc3301.Scrabble.dtypes.bool.SBool;
 import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.string.SString;
-import cc3301.Scrabble.operations.iBinaryOps;
 import cc3301.Scrabble.operations.iLogical;
+import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * SBinary -> Scrabble's binary
@@ -84,25 +85,29 @@ public class SBinary extends AbstractInteger implements iLogical{
 
     // SBinary add,
     // returns the sum between the stored value and another Integer type value
-    public SBinary add(iBinaryOps operand) {
+    @Override
+    public SBinary add(iSummable operand) {
         return operand.addBinary(this);
     }
 
     // SBinary subtract,
     // returns the subtraction between the stored value and another Integer type value
-    public SBinary subtract(iBinaryOps operand) {
-        return operand.subtractBinary(this);
+    @Override
+    public SBinary subtract(iNumberOps subtracting) {
+        return subtracting.subtractBinary(this);
     }
 
     // SBinary multiply,
     // returns the product between the stored value and another Integer type value
-    public SBinary multiply(iBinaryOps operand) {
+    @Override
+    public SBinary multiply(iNumberOps operand) {
         return operand.multiplyBinary(this);
     }
 
     // SBinary division,
     // returns the integer division result between the stored value and another Integer type value
-    public SBinary divide(iBinaryOps operand) {
+    @Override
+    public SBinary divide(iNumberOps operand) {
         return operand.divideBinary(this);
     }
 
@@ -128,13 +133,27 @@ public class SBinary extends AbstractInteger implements iLogical{
     }
 
     // Logical or
-    public SBinary or(SBool bool){
+    @Override
+    public iLogical or(iLogical bool){
         return bool.orbyBinary(this);
     }
 
     // Logical and
-    public SBinary and(SBool bool){
+    @Override
+    public iLogical and(iLogical bool){
         return bool.andbyBinary(this);
+    }
+
+    // Operation not permitted
+    @Override
+    public SBinary orbyBinary(SBinary bool) {
+        return null;
+    }
+
+    // Operation not permitted
+    @Override
+    public SBinary andbyBinary(SBinary bool) {
+        return null;
     }
 
     // Double dispatch, SBool or SBinary case.
@@ -165,6 +184,15 @@ public class SBinary extends AbstractInteger implements iLogical{
             return new SBinary(end);
         }
         return new SBinary(this.toBinary());
+    }
+
+    @Override
+    public iLogical negate() {
+        char[] a = this.toBinary().toCharArray();
+        for(int i = 0; i < a.length; i++) {
+            a[i] = a[i]=='0' ? '1' : '0';
+        }
+        return new SBinary(new String(a));
     }
 
 }

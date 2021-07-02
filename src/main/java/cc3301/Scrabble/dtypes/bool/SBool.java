@@ -1,9 +1,12 @@
 package cc3301.Scrabble.dtypes.bool;
 
 import cc3301.Scrabble.dtypes.AbstractType;
+import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.number.interger.SBinary;
+import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iLogical;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * SBool -> Scrabble's boolean
@@ -56,26 +59,14 @@ public class SBool extends AbstractType implements iLogical {
         return new SString(value);
     }
 
-    // I overloaded the following methods:
-
-    // Logical or, with other Sbool.
-    public SBool or(SBool bool){
-        return (SBool) bool.orbyBool(this);
+    @Override
+    public iLogical or(iLogical operand) {
+        return operand.orbyBool(this);
     }
 
-    // Logical and, with other Sbool.
-    public SBool and(SBool bool){
-        return (SBool) bool.andbyBool(this);
-    }
-
-    // Logical or, with SBinary.
-    public SBinary or(SBinary binary){
-        return binary.orbyBool(this);
-    }
-
-    // Logical and, with SBinary.
-    public SBinary and(SBinary binary){
-        return binary.andbyBool(this);
+    @Override
+    public iLogical and(iLogical operand) {
+        return operand.andbyBool(this);
     }
 
     // Double dispatch logical or by SBool
@@ -90,7 +81,13 @@ public class SBool extends AbstractType implements iLogical {
         return new SBool(this.toBool()&&bool.toBool());
     }
 
+    @Override
+    public iLogical negate() {
+        return new SBool(!this.toBool());
+    }
+
     // Double dispatch logical or by SBinary (exclusive to SBool, NOT applicable to SBinary)
+    @Override
     public SBinary orbyBinary(SBinary binary) {
         if (this.toBool()){
             int n;
@@ -105,6 +102,7 @@ public class SBool extends AbstractType implements iLogical {
     }
 
     // Double dispatch logical and by SBinary (exclusive to SBool, NOT applicable to SBinary)
+    @Override
     public SBinary andbyBinary(SBinary binary) {
         if (!this.toBool()){
             int n;
@@ -116,5 +114,25 @@ public class SBool extends AbstractType implements iLogical {
             return new SBinary(end);
         }
         return new SBinary(binary.toBinary());
+    }
+
+    @Override
+    public iSummable add(iSummable summable) {
+        return null;
+    }
+
+    @Override
+    public SBinary addBinary(SBinary addend) {
+        return null;
+    }
+
+    @Override
+    public SFloat addFloat(SFloat addend) {
+        return null;
+    }
+
+    @Override
+    public iSummable addInt(SInt addend) {
+        return null;
     }
 }

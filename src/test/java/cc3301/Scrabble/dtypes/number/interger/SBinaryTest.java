@@ -195,33 +195,39 @@ class SBinaryTest {
 
     @Test
     void or() { // SBinary or only permitted with SBool
-        bin3 = bin1.or(boolT);
-        bin4 = bin1.or(boolF);
+        bin3 = (SBinary) bin1.or(boolT);
+        bin4 = (SBinary) bin1.or(boolF);
         assertEquals(bin3.toBinary(), "11111111");
         assertEquals(bin4.toBinary(), "11101110");
     }
 
     @Test
     void and() { // SBinary and only permitted with SBool
-        bin3 = bin1.and(boolT);
-        bin4 = bin1.and(boolF);
+        bin3 = (SBinary) bin1.and(boolT);
+        bin4 = (SBinary) bin1.and(boolF);
         assertEquals(bin3.toBinary(), "11101110");
         assertEquals(bin4.toBinary(), "00000000");
     }
 
     @Test
     void orbyBool() {
-        bin3 = bin1.orbyBool(boolT);
-        bin4 = bin1.orbyBool(boolF);
+        bin3 = (SBinary) bin1.orbyBool(boolT);
+        bin4 = (SBinary) bin1.orbyBool(boolF);
         assertEquals(bin3.toBinary(), "11111111");
         assertEquals(bin4.toBinary(), "11101110");
     }
 
     @Test
     void andbyBool() {
-        bin3 = bin1.andbyBool(boolT);
-        bin4 = bin1.andbyBool(boolF);
+        bin3 = (SBinary) bin1.andbyBool(boolT);
+        bin4 = (SBinary) bin1.andbyBool(boolF);
         assertEquals(bin3.toBinary(), "11101110");
         assertEquals(bin4.toBinary(), "00000000");
+    }
+
+    @Test
+    void negate() {
+        SBinary bin3 = (SBinary) bin1.negate();
+        assertEquals(bin3.toBinary(), "01001010");
     }
 }

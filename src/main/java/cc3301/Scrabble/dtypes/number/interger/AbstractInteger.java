@@ -1,13 +1,13 @@
 package cc3301.Scrabble.dtypes.number.interger;
 
 import cc3301.Scrabble.dtypes.number.AbstractNumber;
-import cc3301.Scrabble.operations.iBinaryOps;
 import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * AbstractInteger defines the methods for the Integer type Scrabble Classes
  */
-public abstract class AbstractInteger extends AbstractNumber implements iBinaryOps {
+public abstract class AbstractInteger extends AbstractNumber {
 
     // Transformation from any Scrabble integer to SInt
     public abstract SInt toSInt();
@@ -27,7 +27,7 @@ public abstract class AbstractInteger extends AbstractNumber implements iBinaryO
 
     // Double dispatch, summed by SInteger
     @Override
-    public iNumberOps addInt(SInt addend) {
+    public iSummable addInt(SInt addend) {
         int addend_val = addend.toInt();
         int int_val = this.toInt();
         int new_int_val = addend_val + int_val; // val = bin + int

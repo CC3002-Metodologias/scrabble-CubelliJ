@@ -52,22 +52,22 @@ class SBoolTest {
 
     @Test
     void or() {
-        assertEquals(testSBool.or(bin1).toBinary(), "11111111");
-        assertEquals(ftestSBool.or(bin1).toBinary(), "10110101");
-        assertEquals(testSBool.or(testSBool).toBool(), true); // T or T
-        assertEquals(testSBool.or(ftestSBool).toBool(), true); // T or F
-        assertEquals(ftestSBool.or(testSBool).toBool(), true); // F or T
-        assertEquals(ftestSBool.or(ftestSBool).toBool(), false); // F or F
+        assertEquals(((SBinary) testSBool.or(bin1)).toBinary(), "11111111");
+        assertEquals(((SBinary) ftestSBool.or(bin1)).toBinary(), "10110101");
+        assertEquals(((SBool) testSBool.or(testSBool)).toBool(), true); // T or T
+        assertEquals(((SBool) testSBool.or(ftestSBool)).toBool(), true); // T or F
+        assertEquals(((SBool) ftestSBool.or(testSBool)).toBool(), true); // F or T
+        assertEquals(((SBool) ftestSBool.or(ftestSBool)).toBool(), false); // F or F
     }
 
     @Test
     void and() {
-        assertEquals(testSBool.and(bin1).toBinary(), "10110101");
-        assertEquals(ftestSBool.and(bin1).toBinary(), "00000000");
-        assertEquals(testSBool.and(testSBool).toBool(), true); // T and T
-        assertEquals(testSBool.and(ftestSBool).toBool(), false); // T and F
-        assertEquals(ftestSBool.and(testSBool).toBool(), false); // F and T
-        assertEquals(ftestSBool.and(ftestSBool).toBool(), false); // F and F
+        assertEquals(((SBinary) testSBool.and(bin1)).toBinary(), "10110101");
+        assertEquals(((SBinary) ftestSBool.and(bin1)).toBinary(), "00000000");
+        assertEquals(((SBool) testSBool.and(testSBool)).toBool(), true); // T and T
+        assertEquals(((SBool) testSBool.and(ftestSBool)).toBool(), false); // T and F
+        assertEquals(((SBool) ftestSBool.and(testSBool)).toBool(), false); // F and T
+        assertEquals(((SBool) ftestSBool.and(ftestSBool)).toBool(), false); // F and F
     }
 
     @Test
@@ -100,5 +100,11 @@ class SBoolTest {
         SBinary bin4 = ftestSBool.andbyBinary(bin1);
         assertEquals(bin3.toBinary(), "10110101");
         assertEquals(bin4.toBinary(), "00000000");
+    }
+
+    @Test
+    void negate() {
+        SBool bool1 = (SBool) testSBool.negate();
+        assertEquals(bool1.toBool(), false);
     }
 }

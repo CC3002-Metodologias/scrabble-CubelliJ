@@ -1,6 +1,9 @@
 package cc3301.Scrabble.dtypes.string;
 
 import cc3301.Scrabble.dtypes.AbstractType;
+import cc3301.Scrabble.dtypes.number.flt.SFloat;
+import cc3301.Scrabble.dtypes.number.interger.SBinary;
+import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.operations.iSummable;
 
 /**
@@ -39,5 +42,20 @@ public class SString extends AbstractType {
     // it uses Double dispatch to let the other types handle the operation.
     public SString add(iSummable summand){
         return summand.addedString(this);
+    }
+
+    @Override
+    public SBinary addBinary(SBinary addend) {
+        return null;
+    }
+
+    @Override
+    public SFloat addFloat(SFloat addend) {
+        return null;
+    }
+
+    @Override
+    public iSummable addInt(SInt addend) {
+        return null;
     }
 }

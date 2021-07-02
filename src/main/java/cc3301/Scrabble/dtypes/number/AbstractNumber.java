@@ -5,6 +5,7 @@ import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
 
 /**
  * AbstractNumber defines the set and methods for all the number classes.
@@ -22,7 +23,7 @@ public abstract class AbstractNumber extends AbstractType implements iNumberOps 
     }
 
     // Operation by Integer. (double dispatch)
-    public abstract iNumberOps addInt(SInt addend);
+    public abstract iSummable addInt(SInt addend);
     public abstract iNumberOps subtractInt(SInt subtractant);
     public abstract iNumberOps multiplyInt(SInt operand);
     public abstract iNumberOps divideInt(SInt dividend);
