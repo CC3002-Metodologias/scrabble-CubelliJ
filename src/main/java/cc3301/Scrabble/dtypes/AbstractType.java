@@ -8,7 +8,7 @@ import cc3301.Scrabble.operations.iSummable;
  * AbstractType extends iType and iSummable
  * Some abstract methods are overriten here, such as addedString (dd) and toString.
  */
-public abstract class AbstractType implements iType, iSummable, iComponent {
+public abstract class AbstractType implements iType, iSummable {
     // Transforms the abstractType to a String
     @Override
     public String toString(){

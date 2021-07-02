@@ -1,6 +1,12 @@
 package cc3301.Scrabble.component;
 
-public class AbstractNode implements iComponent{
+import cc3301.Scrabble.dtypes.bool.SBool;
+import cc3301.Scrabble.dtypes.iType;
+import cc3301.Scrabble.dtypes.string.SString;
+import cc3301.Scrabble.operations.iNumberOps;
+import cc3301.Scrabble.operations.iSummable;
+
+public abstract class AbstractNode implements iComponent{
     private iComponent left;
     private iComponent right;
 
@@ -17,10 +23,23 @@ public class AbstractNode implements iComponent{
         return right;
     }
 
-    @Override
-    public iComponent operate() {
-        iComponent left_op = this.left.operate();
-        iComponent right_op = this.right.operate();
-        return null;
+    public iComponent toSBinary(){
+        return (iComponent) ((iNumberOps) this.operate()).toSBinary();
+    }
+
+    public iComponent toSInt(){
+        return (iComponent) ((iNumberOps) this.operate()).toSInt();
+    }
+
+    public iComponent toSFloat(){
+        return (iComponent) ((iNumberOps) this.operate()).toSFloat();
+    }
+
+    public iComponent toSString(){
+        return (iComponent) ((iSummable) this.operate()).toSString();
+    }
+
+    public iComponent toSBool(){
+        return (iComponent) ((SBool) this.operate()).toSBool();
     }
 }

@@ -6,6 +6,10 @@ import cc3301.Scrabble.dtypes.number.interger.SInt;
 
 public interface iNumberOps {
 
+    SBinary toSBinary();
+    SFloat toSFloat();
+    SInt toSInt();
+
     iNumberOps subtract(iNumberOps subtracting);
     iNumberOps multiply(iNumberOps multiplier);
     iNumberOps divide(iNumberOps divider);

@@ -10,6 +10,7 @@ import cc3301.Scrabble.operations.iSummable;
 public abstract class AbstractInteger extends AbstractNumber {
 
     // Transformation from any Scrabble integer to SInt
+    @Override
     public abstract SInt toSInt();
 
     // Transformation from any Scrabble integer to java's integer
@@ -18,6 +19,7 @@ public abstract class AbstractInteger extends AbstractNumber {
     }
 
     // Transforms any Scrabble integer to SBinary
+    @Override
     public abstract SBinary toSBinary();
 
     // Transforms any Scrabble integer to a binary type String.
@@ -62,6 +64,7 @@ public abstract class AbstractInteger extends AbstractNumber {
     }
 
     // Double dispatch, Integer summed by Binary
+    @Override
     public SBinary addBinary(SBinary addend) {
         int int_addend = addend.toInt();
         int added = this.toInt();
@@ -70,6 +73,7 @@ public abstract class AbstractInteger extends AbstractNumber {
     }
 
     // Double dispatch, Binary - IntegerType
+    @Override
     public SBinary subtractBinary(SBinary subtract) {
         int int_subtract = subtract.toInt();
         int subtracted = this.toInt();
@@ -78,6 +82,7 @@ public abstract class AbstractInteger extends AbstractNumber {
     }
 
     // Double dispatch, Binary * IntegerType
+    @Override
     public SBinary multiplyBinary(SBinary product) {
         int int_product = product.toInt();
         int multiplied = this.toInt();
@@ -86,6 +91,7 @@ public abstract class AbstractInteger extends AbstractNumber {
     }
 
     // Double dispatch, Binary / IntegerType
+    @Override
     public SBinary divideBinary(SBinary dividend) {
         int int_dividend = dividend.toInt();
         int quocient = this.toInt();

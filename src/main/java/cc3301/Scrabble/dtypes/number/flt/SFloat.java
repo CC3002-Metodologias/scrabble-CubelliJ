@@ -43,10 +43,20 @@ public class SFloat extends AbstractNumber{
         return new SString(value);
     }
 
+    @Override
+    public SBinary toSBinary() {
+        return null;
+    }
+
     // Returns itself
     @Override
     public SFloat toSFloat() {
         return this;
+    }
+
+    @Override
+    public SInt toSInt() {
+        return null;
     }
 
     // Returns the stored value
@@ -104,9 +114,7 @@ public class SFloat extends AbstractNumber{
 
     /** SInteger double dispatch operations,
      * the SFloat double dispatch methods are inherited and not overwritten
-     * @return
      */
-
 
     // added by integer. (double dispatch)
     @Override

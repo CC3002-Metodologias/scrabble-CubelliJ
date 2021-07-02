@@ -44,7 +44,7 @@ public class SBinary extends AbstractInteger implements iLogical{
     // Returns itself
     @Override
     public SBinary toSBinary() {
-        return this;
+        return new SBinary(this.toBinary());
     }
 
     // Returns the stored value as a String

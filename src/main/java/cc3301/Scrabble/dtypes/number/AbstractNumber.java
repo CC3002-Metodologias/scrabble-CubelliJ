@@ -17,6 +17,7 @@ public abstract class AbstractNumber extends AbstractType implements iNumberOps 
     public abstract SString toSString();
 
     // Number to Float transformations.
+    @Override
     public abstract SFloat toSFloat();
     public double toFloat(){
         return this.toSFloat().toFloat();
