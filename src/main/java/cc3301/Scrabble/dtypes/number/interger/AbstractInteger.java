@@ -38,8 +38,8 @@ public abstract class AbstractInteger extends AbstractNumber {
 
     // Double dispatch, subtracted by SInteger
     @Override
-    public iNumberOps subtractInt(SInt subtract) {
-        int addend_val = subtract.toInt();
+    public iNumberOps subtractInt(SInt subtracted) {
+        int addend_val = subtracted.toInt();
         int int_val = this.toInt();
         int new_int_val = addend_val - int_val; // val = bin + int
         return new SInt(new_int_val); // SInt(Val)

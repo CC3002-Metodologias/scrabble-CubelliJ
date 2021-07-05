@@ -1,6 +1,7 @@
 package cc3301.Scrabble.dtypes.number;
 
 import cc3301.Scrabble.dtypes.AbstractType;
+import cc3301.Scrabble.dtypes.iType;
 import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.dtypes.string.SString;
@@ -25,7 +26,7 @@ public abstract class AbstractNumber extends AbstractType implements iNumberOps 
 
     // Operation by Integer. (double dispatch)
     public abstract iSummable addInt(SInt addend);
-    public abstract iNumberOps subtractInt(SInt subtractant);
+    public abstract iNumberOps subtractInt(SInt subtracted);
     public abstract iNumberOps multiplyInt(SInt operand);
     public abstract iNumberOps divideInt(SInt dividend);
 
@@ -61,4 +62,13 @@ public abstract class AbstractNumber extends AbstractType implements iNumberOps 
         return new SFloat(float_dividend/divisor);
     }
 
+    // Compare
+    @Override
+    public int compareTo(iType other){
+        double f1 = this.toFloat();
+        double f2 = ((iNumberOps) other).toSFloat().toFloat();
+        if (f1-f2 > 0) return 1;
+        if (f1-f2 == 0) return 0;
+        else return -1;
+    }
 }

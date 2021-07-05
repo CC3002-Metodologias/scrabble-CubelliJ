@@ -1,5 +1,6 @@
 package cc3301.Scrabble.dtypes;
 
+import cc3301.Scrabble.dtypes.bool.SBool;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iSummable;
 
@@ -31,5 +32,13 @@ public abstract class AbstractType implements iType, iSummable {
         return this;
     }
 
-
+    // compareTo method
+    // Lets compare two iType objects by comparing their values as strings.
+    // It'll be overridden when we get to the numbers.
+    @Override
+    public int compareTo(iType other){
+        String s1 = this.toString();
+        String s2 = other.toString();
+        return s1.compareTo(s2);
+    }
 }

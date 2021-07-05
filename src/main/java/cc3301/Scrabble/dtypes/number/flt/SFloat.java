@@ -135,8 +135,8 @@ public class SFloat extends AbstractNumber{
 
     // subtracted by integer. (double dispatch)
     @Override
-    public iNumberOps subtractInt(SInt subtract) {
-        double addend_val = subtract.toFloat();
+    public iNumberOps subtractInt(SInt subtracted) {
+        double addend_val = subtracted.toFloat();
         double int_val = this.toFloat();
         double new_int_val = addend_val - int_val; // val = bin + int
         return new SFloat(new_int_val); // SInt(Val)
