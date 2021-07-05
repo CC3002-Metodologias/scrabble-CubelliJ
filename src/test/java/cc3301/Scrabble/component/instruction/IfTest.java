@@ -13,8 +13,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class IfTest {
     VarFactory factory;
-    Var if_test;
-    iComponent if_test2;
+    If if_test;
+    If if_test2;
     @BeforeEach
     void setUp() {
         factory = new VarFactory();
@@ -23,29 +23,26 @@ class IfTest {
         factory.createVar("x", new SBool(true));
         factory.createVar("true", new SInt(54));
         factory.createVar("false", new SInt(64));
-        /*if_test = factory.createVar("c",
-                    new If(factory.createVar("x", null),
-                        new Add(factory.createVar("a", null),
-                                factory.createVar("b", null)), // true: a+b
-                        new Add(factory.createVar("a", null),
-                                factory.createVar("a", null)))); // false: 2a
-
-         */
+        if_test = new If(factory.createVar("x", null),
+                    new Add(factory.createVar("a", null),
+                            factory.createVar("b", null)), // true: a+b
+                    new Add(factory.createVar("a", null),
+                            factory.createVar("a", null))); // false: 2a
     }
-    /*
+
     @Test
     void operate() {
-        assertEquals(if_test.operate(), factory.createVar("true", null).operate());
         factory.createVar("x", new SBool(false));
-        if_test = factory.createVar("c",
-                    new If(factory.get("x"),
-                        new Add(factory.get("a"),
-                                factory.get("b")), // true: a+b
-                        new Add(factory.get("a"),
-                                factory.get("a")))); // false: 2a
-        assertEquals(if_test.operate(), factory.createVar("false", null).operate());
+        if_test = new If(factory.get("x"),
+                    new Add(factory.get("a"),
+                            factory.get("b")), // true: a+b
+                    new Add(factory.get("a"),
+                            factory.get("a"))); // false: 2a
+        factory.createVar("a", if_test.operate()); // 2a
+        factory.createVar("x", new SBool(true));
+        factory.createVar("a", if_test.operate()); // 2a+b
 
-
+        assertEquals(factory.get("a").get_value().toString(), "86");
     }
 
     @Test
@@ -62,5 +59,5 @@ class IfTest {
         assertEquals(factory.createValue(result2.operate()), factory.createVar("false", null).operate());
     }
 
-     */
+
 }
