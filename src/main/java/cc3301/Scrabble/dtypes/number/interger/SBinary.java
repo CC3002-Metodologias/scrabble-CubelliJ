@@ -186,6 +186,8 @@ public class SBinary extends AbstractInteger implements iLogical{
         return new SBinary(this.toBinary());
     }
 
+    // Negate method:
+    // It flips each bit of a binary representation. (0 to 1, 1 to 0)
     @Override
     public iLogical negate() {
         char[] a = this.toBinary().toCharArray();
@@ -193,6 +195,13 @@ public class SBinary extends AbstractInteger implements iLogical{
             a[i] = a[i]=='0' ? '1' : '0';
         }
         return new SBinary(new String(a));
+    }
+
+    // Key for flyweight comparison between iType classes, generating a String like key
+    // that enables to calculate a hashcode.
+    @Override
+    public String getKey(){
+        return "SBinary" + this.toString();
     }
 
 }

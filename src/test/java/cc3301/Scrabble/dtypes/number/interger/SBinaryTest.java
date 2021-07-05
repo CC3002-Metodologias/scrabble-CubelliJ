@@ -56,8 +56,8 @@ class SBinaryTest {
 
     @Test
     void toSBinary() {
-        assertEquals(bin1.toSBinary(), bin1);
-        assertEquals(bin2.toSBinary(), bin2);
+        assertEquals(bin1.toSBinary().toBinary(), bin1.toBinary());
+        assertEquals(bin2.toSBinary().toBinary(), bin2.toBinary());
     }
 
     @Test
@@ -228,6 +228,24 @@ class SBinaryTest {
     @Test
     void negate() {
         SBinary bin3 = (SBinary) bin1.negate();
-        assertEquals(bin3.toBinary(), "01001010");
+        assertEquals(bin3.toBinary(), "00010001");
+    }
+
+    @Test
+    void orbyBinary() {
+        bin3 = (SBinary) bin1.orbyBinary(bin2);
+        assertEquals(bin3, null);
+    }
+
+    @Test
+    void andbyBinary() {
+        bin3 = (SBinary) bin1.andbyBinary(bin2);
+        assertEquals(bin3, null);
+    }
+
+    @Test
+    void getKey() {
+        String key = bin1.getKey();
+        assertEquals("SBinary11101110", key);
     }
 }

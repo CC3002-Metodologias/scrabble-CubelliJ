@@ -1,6 +1,5 @@
 package cc3301.Scrabble.dtypes;
 
-import cc3301.Scrabble.component.iComponent;
 import cc3301.Scrabble.dtypes.string.SString;
 import cc3301.Scrabble.operations.iSummable;
 
@@ -26,8 +25,11 @@ public abstract class AbstractType implements iType, iSummable {
         return new SString(string.toString()+this.toString());
     }
 
+    // Allows the introduction of STypes into the Node operation world.
     @Override
-    public iComponent operate(){
+    public iType operate(){
         return this;
     }
+
+
 }

@@ -1,7 +1,10 @@
 package cc3301.Scrabble.dtypes.bool;
 
+import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.number.interger.SBinary;
+import cc3301.Scrabble.dtypes.number.interger.SInt;
 import cc3301.Scrabble.dtypes.string.SString;
+import cc3301.Scrabble.operations.iSummable;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -106,5 +109,37 @@ class SBoolTest {
     void negate() {
         SBool bool1 = (SBool) testSBool.negate();
         assertEquals(bool1.toBool(), false);
+    }
+
+    @Test
+    void add() {
+        iSummable sum = testSBool.add(bin1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void addBinary() {
+        iSummable sum = testSBool.addBinary(bin1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void addFloat() {
+        SFloat f1 = new SFloat(3.4);
+        iSummable sum = testSBool.addFloat(f1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void addInt() {
+        SInt i1 = new SInt(4);
+        iSummable sum = testSBool.addInt(i1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void getKey() {
+        String key = testSBool.getKey();
+        assertEquals("SBooltrue", key);
     }
 }

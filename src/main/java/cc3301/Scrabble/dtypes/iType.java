@@ -9,6 +9,13 @@ import cc3301.Scrabble.dtypes.string.SString;
  */
 public interface iType extends iComponent {
     @Override
+    // iType to String conversion method
     String toString(); // Java type
+
+    // iType to Scrabble's String conversion method
     SString toSString(); // Scrabble type
+
+    // Key for flyweight comparison between iType classes, generating a String like key
+    // that enables to calculate a hashcode.
+    String getKey();
 }

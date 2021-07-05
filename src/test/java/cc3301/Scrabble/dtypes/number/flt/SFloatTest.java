@@ -146,4 +146,39 @@ class SFloatTest {
         assertEquals(f4.toFloat(), f1.toFloat()/i1.toFloat()); // SFloat / SInt
         assertEquals(f5.toFloat(), f1.toFloat()/b1.toFloat()); // SFloat / SBinary
     }
+
+    @Test
+    void toSBinary() {
+        assertEquals(f1.toSBinary(), null);
+    }
+
+    @Test
+    void toSInt() {
+        assertEquals(f1.toSInt(), null);
+    }
+
+    @Test
+    void addBinary() {
+        assertEquals(f1.addBinary(b1), null);
+    }
+
+    @Test
+    void subtractBinary() {
+        assertEquals(f1.subtractBinary(b1), null);
+    }
+
+    @Test
+    void multiplyBinary() {
+        assertEquals(f1.multiplyBinary(b1), null);
+    }
+
+    @Test
+    void divideBinary() {
+        assertEquals(f1.divideBinary(b1), null);
+    }
+
+    @Test
+    void getKey() {
+        assertEquals(f1.getKey(), "SFloat3.23");
+    }
 }

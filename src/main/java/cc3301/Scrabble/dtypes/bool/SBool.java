@@ -59,11 +59,13 @@ public class SBool extends AbstractType implements iLogical {
         return new SString(value);
     }
 
+    // Logical OR
     @Override
     public iLogical or(iLogical operand) {
         return operand.orbyBool(this);
     }
 
+    // Logical AND
     @Override
     public iLogical and(iLogical operand) {
         return operand.andbyBool(this);
@@ -81,6 +83,8 @@ public class SBool extends AbstractType implements iLogical {
         return new SBool(this.toBool()&&bool.toBool());
     }
 
+    // Negate method:
+    // It changes the logical value from True to False and vice-versa.
     @Override
     public iLogical negate() {
         return new SBool(!this.toBool());
@@ -116,23 +120,34 @@ public class SBool extends AbstractType implements iLogical {
         return new SBinary(binary.toBinary());
     }
 
+    // SBool can't add another iSummable, so it returns null. (double dispatch)
     @Override
     public iSummable add(iSummable summable) {
         return null;
     }
 
+    // SBool can't be added by Binary, so it returns null. (double dispatch)
     @Override
     public SBinary addBinary(SBinary addend) {
         return null;
     }
 
+    // SBool can't be added by Float, so it returns null. (double dispatch)
     @Override
     public SFloat addFloat(SFloat addend) {
         return null;
     }
 
+    // SBool can't be added by Int, so it returns null. (double dispatch)
     @Override
     public iSummable addInt(SInt addend) {
         return null;
+    }
+
+    // Key for flyweight comparison between iType classes, generating a String like key
+    // that enables to calculate a hashcode.
+    @Override
+    public String getKey(){
+        return "SBool" + this.toString();
     }
 }

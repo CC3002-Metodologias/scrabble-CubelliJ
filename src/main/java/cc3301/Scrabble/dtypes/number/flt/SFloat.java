@@ -43,6 +43,8 @@ public class SFloat extends AbstractNumber{
         return new SString(value);
     }
 
+    // toSBinary method:
+    // SFloat can not be converted to SBinary, so it returns null.
     @Override
     public SBinary toSBinary() {
         return null;
@@ -54,6 +56,8 @@ public class SFloat extends AbstractNumber{
         return this;
     }
 
+    // toSInt method:
+    // SFloat can not be converted to SInt, so it returns null.
     @Override
     public SInt toSInt() {
         return null;
@@ -92,21 +96,25 @@ public class SFloat extends AbstractNumber{
         return operand.divideFloat(this);
     }
 
+    // SFloat can't be added by Binary, so it returns null. (double dispatch)
     @Override
     public SBinary addBinary(SBinary addend) {
         return null;
     }
 
+    // SFloat can't subtract a SBinary, so it returns null. (double dispatch)
     @Override
     public SBinary subtractBinary(SBinary subtract) {
         return null;
     }
 
+    // SFloat can't multiply a SBinary, so it returns null. (double dispatch)
     @Override
     public SBinary multiplyBinary(SBinary product) {
         return null;
     }
 
+    // SFloat can't divide a SBinary, so it returns null. (double dispatch)
     @Override
     public SBinary divideBinary(SBinary dividend) {
         return null;
@@ -150,5 +158,12 @@ public class SFloat extends AbstractNumber{
         double int_val = this.toFloat();
         double new_int_val = addend_val / int_val; // val = bin / int
         return new SFloat(new_int_val); // SInt(Val)
+    }
+
+    // Key for flyweight comparison between iType classes, generating a String like key
+    // that enables to calculate a hashcode.
+    @Override
+    public String getKey(){
+        return "SFloat" + this.toString();
     }
 }

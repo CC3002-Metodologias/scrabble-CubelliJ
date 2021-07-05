@@ -58,4 +58,11 @@ public class SString extends AbstractType {
     public iSummable addInt(SInt addend) {
         return null;
     }
+
+    // Key for flyweight comparison between iType classes, generating a String like key
+    // that enables to calculate a hashcode.
+    @Override
+    public String getKey(){
+        return "SString" + this.toString();
+    }
 }

@@ -1,5 +1,6 @@
 package cc3301.Scrabble.component;
 
+import cc3301.Scrabble.component.variable.Var;
 import cc3301.Scrabble.dtypes.number.interger.SInt;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,8 @@ class VarTest {
     }
 
     @Test
-    void getVar_name() {
-        assertEquals("x", var.getVar_name());
+    void get_name() {
+        assertEquals("x", var.get_name());
     }
 
     @Test

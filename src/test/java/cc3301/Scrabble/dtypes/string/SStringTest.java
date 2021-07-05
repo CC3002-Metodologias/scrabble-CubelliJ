@@ -4,6 +4,7 @@ import cc3301.Scrabble.dtypes.bool.SBool;
 import cc3301.Scrabble.dtypes.number.flt.SFloat;
 import cc3301.Scrabble.dtypes.number.interger.SBinary;
 import cc3301.Scrabble.dtypes.number.interger.SInt;
+import cc3301.Scrabble.operations.iSummable;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -46,5 +47,29 @@ class SStringTest {
         assertEquals(s6.toString(), "Test string 1001010");
         SString s7 = s1.add(f1);
         assertEquals(s7.toString(), "Test string 3.1416");
+    }
+
+    @Test
+    void addBinary() {
+        iSummable sum = s1.addBinary(bin1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void addFloat() {
+        iSummable sum = s1.addFloat(f1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void addInt() {
+        iSummable sum = s1.addInt(i1);
+        assertEquals(sum, null);
+    }
+
+    @Test
+    void getKey() {
+        String key = s1.getKey();
+        assertEquals(key, "SStringTest string ");
     }
 }
