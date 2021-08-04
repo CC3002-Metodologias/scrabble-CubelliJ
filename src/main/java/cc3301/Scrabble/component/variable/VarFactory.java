@@ -1,6 +1,7 @@
 package cc3301.Scrabble.component.variable;
 
 import cc3301.Scrabble.component.iComponent;
+import cc3301.Scrabble.component.operation.Add;
 import cc3301.Scrabble.dtypes.iType;
 
 import java.util.Hashtable;
@@ -63,5 +64,7 @@ public class VarFactory {
     public Var get(String var_name){
         return Var_hashtable.get(var_name);
     }
+
+
 }
 

@@ -23,24 +23,15 @@ public class While implements iVisitor {
     public iComponent operate() {
         SBool conditional = (SBool) (this.cond.operate());
         if (conditional.toBool()){
-            this.whileTrue.operate();
+            visit(this.whileTrue);
             return this.operate();
         }
         return (iType) this.whileTrue;
     }
 
     @Override
-    public iType visitVariable(iComponent visit) {
-        return null;
+    public void visit(iComponent tree) {
+        tree.operate();
     }
 
-    @Override
-    public iType visitOperation(iComponent visit) {
-        return null;
-    }
-
-    @Override
-    public iType visitType(iComponent visit) {
-        return null;
-    }
 }

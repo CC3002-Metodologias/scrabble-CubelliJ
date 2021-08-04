@@ -6,7 +6,7 @@ import cc3301.Scrabble.dtypes.iType;
 // Var:
 // Scrabble's Node/Leaf encapsulate that allows to save the STypes in a variable
 // It consists on a variable name and it's contents.
-public class Var implements iComponent {
+public class Var implements iComponent, Comparable<iType>{
     private final String var_name;
     private iType value;
 
@@ -24,7 +24,7 @@ public class Var implements iComponent {
 
     // get_value:
     // Var getter for the variable's value.
-    public iComponent get_value() {
+    public iType get_value() {
         return this.value;
     }
 
@@ -36,7 +36,13 @@ public class Var implements iComponent {
     // operate method:
     // Given that Var acts as a pseudo leaf, it returns its contents when called.
     @Override
-    public iType operate() {
+    public iComponent operate() {
         return value;
+    }
+
+    @Override
+    public int compareTo(iType component) {
+        this.get_value().compareTo(component);
+        return 0;
     }
 }
