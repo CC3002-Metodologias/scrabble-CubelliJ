@@ -60,12 +60,18 @@ public class VarFactory{
         return variable;
     }
 
+    // setFun method:
+    // It sets a function (tree of nodes with operations) in a variable,
+    // in order to be able to run continously the function without having to recreate it.
     public Var setFun(String var_name, iComponent val){
         Var variable = Var_hashtable.get(var_name);
         variable.setFunction(val);
         return variable;
     }
 
+    // runVal method:
+    // runs the function stored and replaces the stored value with the new one,
+    // ensuring an optimal memory use.
     public Var runVal(String var_name){
         Var variable = Var_hashtable.get(var_name);
         iComponent val = variable.getFunction();

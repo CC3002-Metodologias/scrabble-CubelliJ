@@ -6,9 +6,7 @@ import cc3301.Scrabble.component.iComparator;
 import cc3301.Scrabble.component.iComponent;
 import cc3301.Scrabble.component.variable.Var;
 import cc3301.Scrabble.component.variable.VarFactory;
-import cc3301.Scrabble.component.visitor.iVisitor;
 import cc3301.Scrabble.dtypes.bool.SBool;
-import cc3301.Scrabble.dtypes.iType;
 
 // Scrabble's while loop for AST tree operations.
 // While the condition is true, it runs the whileTrue sub tree repetitively.
@@ -23,8 +21,10 @@ public class While {
         this.whileTrue = whileTrue;
     }
 
-    // operate method
-    //
+    // operate method,
+    // Runs continuously a function while the condition remains true.
+    // The condition is an iComparator object, and the whileTrue condition is
+    // always a variable that is performing a determined function.
     public void operate() {
         SBool conditional = (SBool) this.cond.operate();
         if (conditional.toBool()){
