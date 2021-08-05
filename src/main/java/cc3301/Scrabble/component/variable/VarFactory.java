@@ -55,10 +55,24 @@ public class VarFactory{
                 variable.setValue(value);
             }
         }
+        variable.setFunction(val);
+        variable.setFactory(this);
         return variable;
     }
 
+    public Var setFun(String var_name, iComponent val){
+        Var variable = Var_hashtable.get(var_name);
+        variable.setFunction(val);
+        return variable;
+    }
 
+    public Var runVal(String var_name){
+        Var variable = Var_hashtable.get(var_name);
+        iComponent val = variable.getFunction();
+        iType value = this.createValue(val);
+        variable.setValue(value);
+        return variable;
+    }
 
     // get allows to retrieve a variable by it's name.
     // while a variable can be retrieved using createVal(val_name, null),

@@ -4,6 +4,8 @@ import cc3301.Scrabble.component.comparator.Equal;
 import cc3301.Scrabble.component.comparator.LessThan;
 import cc3301.Scrabble.component.iComparator;
 import cc3301.Scrabble.component.iComponent;
+import cc3301.Scrabble.component.variable.Var;
+import cc3301.Scrabble.component.variable.VarFactory;
 import cc3301.Scrabble.component.visitor.iVisitor;
 import cc3301.Scrabble.dtypes.bool.SBool;
 import cc3301.Scrabble.dtypes.iType;
@@ -26,9 +28,11 @@ public class While {
     public void operate() {
         SBool conditional = (SBool) this.cond.operate();
         if (conditional.toBool()){
-            whileTrue.operate();
+            VarFactory factory = ((Var) whileTrue).getFactory();
+            factory.runVal(((Var) whileTrue).get_name());
+            this.operate();
         }
-        return
     }
+
 
 }

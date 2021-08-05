@@ -15,17 +15,18 @@ import static org.junit.jupiter.api.Assertions.*;
 class WhileTest {
     VarFactory factory;
     While aWhile;
-    LessThan condition;
+    iComparator condition;
     @BeforeEach
     void setUp() {
         factory = new VarFactory();
         factory.createVar("a", new SInt(1));
         factory.createVar("b", new SInt(2));
-        factory.createVar("c", new SInt(5));
+        factory.createVar("c", new SInt(7));
         factory.createVar("x", new SBool(true));
         condition = new LessThan(factory.get("b"), factory.get("c"));
+        factory.setFun("b", new Add(factory.get("b"), factory.get("a")));
         aWhile = new While(condition,
-                            factory.createVar("b", new Add(factory.get("b"), factory.get("a")))
+                            factory.get("b")
         );
 
     }
@@ -33,12 +34,11 @@ class WhileTest {
     @Test
     void testOperate() {
         assertEquals(factory.get("a").get_value().toString(), "1");
-        assertEquals(factory.get("b").get_value().toString(), "2");
-        assertEquals(factory.get("c").get_value().toString(), "5");
+        assertEquals(factory.get("b").get_value().toString(), "2"); // aqui falla la cosa,
+        assertEquals(factory.get("c").get_value().toString(), "7");
         aWhile.operate();
         assertEquals(factory.get("a").get_value().toString(), "1");
-        assertEquals("4", factory.get("b").get_value().toString());
-
+        assertEquals("7", factory.get("b").get_value().toString());
     }
 
 }

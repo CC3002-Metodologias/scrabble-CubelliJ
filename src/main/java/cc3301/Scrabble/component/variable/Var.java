@@ -8,7 +8,9 @@ import cc3301.Scrabble.dtypes.iType;
 // It consists on a variable name and it's contents.
 public class Var implements iComponent, Comparable<iType>{
     private final String var_name;
+    private iComponent function;
     private iType value;
+    private VarFactory factory; // Reference factory.
 
     // Constructor: Takes the variable name as an String and the stored value as an iType.
     public Var(String var_name, iType value){
@@ -43,5 +45,21 @@ public class Var implements iComponent, Comparable<iType>{
     @Override
     public int compareTo(iType component) {
         return this.get_value().compareTo(component);
+    }
+
+    public iComponent getFunction() {
+        return function;
+    }
+
+    public void setFunction(iComponent function) {
+        this.function = function;
+    }
+
+    public VarFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(VarFactory factory) {
+        this.factory = factory;
     }
 }
