@@ -7,12 +7,12 @@ import cc3301.Scrabble.dtypes.iType;
 import java.util.Hashtable;
 
 // VarFactory:
-// Flyweight implementation of the commom variable.
+// Flyweight implementation of the common variable.
 // It acts as a factory allowing the creation of variables,
 // and stores its values in a hashtable so they are not duplicated.
 // It also stores the variable in a hashtable with it's name as the key.
 // So the variable can be retrieved when it's asked by it's name.
-public class VarFactory {
+public class VarFactory{
     private Hashtable<String, iType> iType_hashtable = new Hashtable<>();
     private Hashtable<String, Var> Var_hashtable = new Hashtable<>();
 
@@ -57,6 +57,8 @@ public class VarFactory {
         }
         return variable;
     }
+
+
 
     // get allows to retrieve a variable by it's name.
     // while a variable can be retrieved using createVal(val_name, null),

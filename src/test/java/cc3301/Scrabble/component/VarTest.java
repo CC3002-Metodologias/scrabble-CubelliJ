@@ -9,6 +9,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class VarTest {
     Var var;
+    Var var2;
+    Var var3;
     SInt i1;
     SInt i2;
     @BeforeEach
@@ -16,6 +18,8 @@ class VarTest {
         i1 = new SInt(23);
         i2 = new SInt(12);
         var = new Var("x", i1);
+        var2 = new Var("y", i1);
+        var3 = new Var("z", i2);
     }
 
     @Test
@@ -32,5 +36,12 @@ class VarTest {
     @Test
     void operate() {
         assertEquals(i1, var.operate());
+    }
+
+    @Test
+    void compareTo() {
+        assertEquals(0, var.compareTo(var2.get_value()));
+        assertEquals(1, var.compareTo(var3.get_value()));
+        assertEquals(-1, var3.compareTo(var.get_value()));
     }
 }

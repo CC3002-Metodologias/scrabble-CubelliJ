@@ -37,12 +37,11 @@ public class Var implements iComponent, Comparable<iType>{
     // Given that Var acts as a pseudo leaf, it returns its contents when called.
     @Override
     public iComponent operate() {
-        return value;
+        return value.operate();
     }
 
     @Override
     public int compareTo(iType component) {
-        this.get_value().compareTo(component);
-        return 0;
+        return this.get_value().compareTo(component);
     }
 }
