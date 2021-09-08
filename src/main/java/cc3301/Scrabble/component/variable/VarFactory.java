@@ -1,17 +1,18 @@
 package cc3301.Scrabble.component.variable;
 
 import cc3301.Scrabble.component.iComponent;
+import cc3301.Scrabble.component.operation.Add;
 import cc3301.Scrabble.dtypes.iType;
 
 import java.util.Hashtable;
 
 // VarFactory:
-// Flyweight implementation of the commom variable.
+// Flyweight implementation of the common variable.
 // It acts as a factory allowing the creation of variables,
 // and stores its values in a hashtable so they are not duplicated.
 // It also stores the variable in a hashtable with it's name as the key.
 // So the variable can be retrieved when it's asked by it's name.
-public class VarFactory {
+public class VarFactory{
     private Hashtable<String, iType> iType_hashtable = new Hashtable<>();
     private Hashtable<String, Var> Var_hashtable = new Hashtable<>();
 
@@ -54,6 +55,28 @@ public class VarFactory {
                 variable.setValue(value);
             }
         }
+        variable.setFunction(val);
+        variable.setFactory(this);
+        return variable;
+    }
+
+    // setFun method:
+    // It sets a function (tree of nodes with operations) in a variable,
+    // in order to be able to run continously the function without having to recreate it.
+    public Var setFun(String var_name, iComponent val){
+        Var variable = Var_hashtable.get(var_name);
+        variable.setFunction(val);
+        return variable;
+    }
+
+    // runVal method:
+    // runs the function stored and replaces the stored value with the new one,
+    // ensuring an optimal memory use.
+    public Var runVal(String var_name){
+        Var variable = Var_hashtable.get(var_name);
+        iComponent val = variable.getFunction();
+        iType value = this.createValue(val);
+        variable.setValue(value);
         return variable;
     }
 
@@ -63,5 +86,7 @@ public class VarFactory {
     public Var get(String var_name){
         return Var_hashtable.get(var_name);
     }
+
+
 }
 

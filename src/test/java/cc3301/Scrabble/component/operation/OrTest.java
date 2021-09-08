@@ -11,11 +11,13 @@ import static org.junit.jupiter.api.Assertions.*;
 class OrTest {
     iComponent or_tree_1;
     iComponent or_tree_2;
+    Or or_tree_3;
 
     @BeforeEach
     void setUp() {
         or_tree_1 = new Or( new SBool(true), new SBinary("0101")); // "1111"
         or_tree_2 = new Or( new SBinary("0101"), new SBool(false)); // "0101"
+        or_tree_3 = new Or( new SBool(true), new SBool(false)); // "true"
     }
 
     @Test
@@ -24,5 +26,11 @@ class OrTest {
         SBinary result2 = (SBinary) or_tree_2.operate();
         assertEquals("1111", result1.toBinary());
         assertEquals("0101", result2.toBinary());
+    }
+
+    @Test
+    void toSBool() {
+        SBool result1 = (SBool) or_tree_3.toSBool();
+        assertEquals("true", result1.toString());
     }
 }
